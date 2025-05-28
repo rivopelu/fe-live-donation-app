@@ -1,0 +1,30 @@
+import { type JSX } from 'react';
+import type { PageType } from '@/enums/page-type-enum.ts';
+import HomePage from '@/pages/HomePage.tsx';
+import { ROUTES } from '@/routes/routes.ts';
+import SignInPage from '@/pages/auth/SignInPage.tsx';
+import DashboardPage from '@/pages/dashboard/DashboardPage.tsx';
+
+export interface IRouteList {
+  element: () => JSX.Element;
+  path: string;
+  type: PageType;
+}
+
+export const routeList: IRouteList[] = [
+  {
+    element: HomePage,
+    type: 'FULL_PAGE',
+    path: ROUTES.HOME(),
+  },
+  {
+    path: ROUTES.SIGN_IN(),
+    type: 'FULL_PAGE',
+    element: SignInPage,
+  },
+  {
+    path: ROUTES.DASHBOARD(),
+    type: 'DASHBOARD',
+    element: DashboardPage,
+  },
+];
