@@ -8,7 +8,7 @@ export default function Base(props: IProps) {
       case 'PRIMARY':
         return <div>{props.children}</div>;
       case 'FULL_PAGE':
-        return <div>{props.children}</div>;
+        return <>{props.children}</>;
       case 'DASHBOARD':
         return (
           <div className={'flex'}>

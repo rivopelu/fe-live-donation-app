@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "tw-animate-css";
+
 
 @custom-variant dark (&:is(.dark *));
 
@@ -117,4 +117,278 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* =============================================================================
+   COMPLETE TYPOGRAPHY STYLES
+   Comprehensive styling for all text elements
+   ============================================================================= */
+
+/* HEADINGS */
+h1 {
+    @apply text-4xl md:text-5xl font-bold leading-tight tracking-tight;
+    @apply mb-6 mt-8 text-gray-900 dark:text-white;
+}
+
+h2 {
+    @apply text-3xl md:text-4xl font-semibold leading-tight tracking-tight;
+    @apply text-gray-800 dark:text-gray-100;
+}
+
+h3 {
+    @apply text-2xl md:text-3xl font-semibold leading-snug;
+    @apply  text-gray-800 dark:text-gray-100;
+}
+
+h4 {
+    @apply text-xl md:text-2xl font-medium leading-snug;
+    @apply text-gray-700 dark:text-gray-200;
+}
+
+h5 {
+    @apply text-lg md:text-xl font-medium leading-normal;
+    @apply text-gray-700 dark:text-gray-200;
+}
+
+h6 {
+    @apply text-base md:text-lg font-medium leading-normal;
+    @apply text-gray-600 dark:text-gray-300;
+}
+
+/* PARAGRAPHS & TEXT */
+p {
+    @apply text-base leading-relaxed mb-4;
+    @apply text-gray-700 dark:text-gray-300;
+}
+
+.lead {
+    @apply text-lg md:text-xl leading-relaxed font-light;
+    @apply text-gray-600 dark:text-gray-400 mb-6;
+}
+
+.small {
+    @apply text-sm leading-normal;
+    @apply text-gray-600 dark:text-gray-400;
+}
+
+.xs {
+    @apply text-xs leading-tight;
+    @apply text-gray-500 dark:text-gray-500;
+}
+
+/* TEXT EMPHASIS */
+strong, b {
+    @apply font-semibold text-gray-900 dark:text-white;
+}
+
+em, i {
+    @apply italic;
+}
+
+mark {
+    @apply bg-yellow-200 dark:bg-yellow-800 px-1 rounded;
+}
+
+del {
+    @apply line-through text-gray-500 dark:text-gray-500;
+}
+
+ins {
+    @apply underline decoration-green-500 decoration-2;
+}
+
+u {
+    @apply underline decoration-blue-500 decoration-2;
+}
+
+/* LINKS */
+a {
+    @apply text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300;
+    @apply underline decoration-1 underline-offset-2 hover:decoration-2;
+    @apply transition-colors duration-200;
+}
+
+a:focus {
+    @apply outline-2 outline-blue-500 outline-offset-2;
+}
+
+/* BLOCKQUOTES */
+blockquote {
+    @apply border-l-4 border-gray-300 dark:border-gray-600 pl-4 py-2 mb-4;
+    @apply italic text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-800;
+    @apply rounded-r-md;
+}
+
+blockquote cite {
+    @apply block mt-2 text-sm text-gray-500 dark:text-gray-400;
+    @apply not-italic font-medium;
+}
+
+blockquote cite:before {
+    content: "— ";
+}
+
+/* CODE */
+code {
+    @apply bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200;
+    @apply px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+pre {
+    @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4;
+    @apply text-sm leading-relaxed;
+}
+
+pre code {
+    @apply bg-transparent p-0 text-inherit;
+}
+
+/* KEYBOARD KEYS */
+kbd {
+    @apply bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600;
+    @apply rounded px-1.5 py-0.5 text-xs font-mono;
+    @apply shadow-sm;
+}
+
+/* LISTS */
+ul, ol {
+    @apply mb-4 ml-6;
+}
+
+ul {
+    @apply list-disc;
+}
+
+ol {
+    @apply list-decimal;
+}
+
+li {
+    @apply mb-1 leading-relaxed text-gray-700 dark:text-gray-300;
+}
+
+li::marker {
+    @apply text-gray-500 dark:text-gray-400;
+}
+
+/* NESTED LISTS */
+ul ul, ol ol, ul ol, ol ul {
+    @apply mb-2 mt-1;
+}
+
+/* DEFINITION LISTS */
+dl {
+    @apply mb-4;
+}
+
+dt {
+    @apply font-semibold text-gray-900 dark:text-white mb-1;
+}
+
+dd {
+    @apply ml-4 mb-2 text-gray-700 dark:text-gray-300;
+}
+
+/* HORIZONTAL RULE */
+hr {
+    @apply border-0 border-t border-gray-300 dark:border-gray-600 my-8;
+}
+
+/* TABLES */
+table {
+    @apply w-full border-collapse mb-4;
+}
+
+th {
+    @apply bg-gray-50 dark:bg-gray-800 font-semibold text-left;
+    @apply px-4 py-2 border border-gray-300 dark:border-gray-600;
+    @apply text-gray-900 dark:text-white;
+}
+
+td {
+    @apply px-4 py-2 border border-gray-300 dark:border-gray-600;
+    @apply text-gray-700 dark:text-gray-300;
+}
+
+/* FORM ELEMENTS TEXT */
+label {
+    @apply block font-medium text-gray-700 dark:text-gray-300 mb-1;
+}
+
+.form-help {
+    @apply text-sm text-gray-500 dark:text-gray-400 mt-1;
+}
+
+.form-error {
+    @apply text-sm text-red-600 dark:text-red-400 mt-1;
+}
+
+/* UTILITY CLASSES */
+.text-center { @apply text-center; }
+.text-left { @apply text-left; }
+.text-right { @apply text-right; }
+.text-justify { @apply text-justify; }
+
+.uppercase { @apply uppercase; }
+.lowercase { @apply lowercase; }
+.capitalize { @apply capitalize; }
+
+.truncate { @apply truncate; }
+.break-words { @apply break-words; }
+.break-all { @apply break-all; }
+
+/* RESPONSIVE TEXT SIZES */
+.text-responsive-xs { @apply text-xs sm:text-sm; }
+.text-responsive-sm { @apply text-sm sm:text-base; }
+.text-responsive-base { @apply text-base sm:text-lg; }
+.text-responsive-lg { @apply text-lg sm:text-xl; }
+.text-responsive-xl { @apply text-xl sm:text-2xl; }
+
+/* DISPLAY TEXT (Hero sections) */
+.display-1 {
+    @apply text-5xl md:text-6xl lg:text-7xl font-bold leading-none tracking-tight;
+    @apply text-gray-900 dark:text-white;
+}
+
+.display-2 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight;
+    @apply text-gray-900 dark:text-white;
+}
+
+.display-3 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight;
+    @apply text-gray-800 dark:text-gray-100;
+}
+
+/* SPECIAL TEXT STYLES */
+.text-gradient {
+    @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent;
+}
+
+.text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* PRINT STYLES */
+@media print {
+    h1, h2, h3, h4, h5, h6 {
+        @apply text-black break-after-avoid;
+    }
+
+    p, li {
+        @apply text-black;
+    }
+
+    a {
+        @apply text-black no-underline;
+    }
+
+    a:after {
+        content: " (" attr(href) ")";
+        @apply text-sm;
+    }
 }
