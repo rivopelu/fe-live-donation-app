@@ -5,12 +5,18 @@ import { MdEmail, MdVisibility, MdVisibilityOff } from 'react-icons/md';
 import { Button } from '@/components/ui/button.tsx';
 import { ENV } from '@/constants/env.ts';
 import BrandLogo from '@/components/BrandLogo.tsx';
+import { ASSETS } from '@/constants/assets.ts';
 
 export default function SignInPage() {
   const page = useSignInPage();
   return (
     <div className={'flex w-full'}>
-      <div className={'min-h-screen bg-neutral-400 w-1/3'}></div>
+      <div
+        className={'min-h-screen bg-neutral-200 dark:bg-sidebar  w-1/3 bg-cover'}
+        style={{
+          backgroundImage: `url(${ASSETS.IMG_LOGIN})`,
+        }}
+      ></div>
       <div className={'flex-1 flex items-center justify-center'}>
         <div>
           <BrandLogo />
@@ -19,6 +25,7 @@ export default function SignInPage() {
           <FormikProvider value={page.formik}>
             <div className={'grid gap-4 my-8'}>
               <InputText
+                onEnter={() => page.formik.handleSubmit()}
                 endIcon={<MdEmail />}
                 name={'email'}
                 id={'email'}
@@ -27,6 +34,7 @@ export default function SignInPage() {
                 label={'Email'}
               />
               <InputText
+                onEnter={() => page.formik.handleSubmit()}
                 endIcon={
                   <span
                     onClick={() => page.setShowPassword((e) => !e)}
