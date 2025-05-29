@@ -8,8 +8,9 @@ import type { BaseResponse } from '@/types/response/IResModel.ts';
 import type { IResSignIn } from '@/types/response/IResSignIn.ts';
 import type { IReqSignIn } from '@/types/request/IReqSignIn.ts';
 import { ROUTES } from '@/routes/routes.ts';
-import { fetchApiError } from '@/services/error.service.ts';
 import { AuthContext } from '@/context/auth.context.ts';
+import ErrorService from '@/services/error.service.ts';
+import toast from 'react-hot-toast';
 
 const AuthProvider = ({ children }: { children: ReactNode }) => {
   const rawUser = localStorage.getItem(LOCAL_STORAGE_KEY.USER);
@@ -19,6 +20,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<IResGetMe | undefined>(getUser || undefined);
   const navigate = useNavigate();
   const httpService = new HttpService();
+  const errorService = new ErrorService();
 
   function loginAction(data: IReqSignIn, setLoading: (loading: boolean) => void) {
     setLoading(true);
@@ -32,11 +34,12 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
         setUser(userData);
         localStorage.setItem(LOCAL_STORAGE_KEY.ACCESS_TOKEN, resToken);
         localStorage.setItem(LOCAL_STORAGE_KEY.USER, JSON.stringify(userData));
+        toast.success('Sign In Berhasil...');
         navigate(ROUTES.DASHBOARD());
       })
       .catch((e) => {
+        errorService.fetchApiError(e);
         setLoading(false);
-        fetchApiError(e);
       });
   }
 

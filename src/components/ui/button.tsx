@@ -47,7 +47,12 @@ function Button({
   const Comp = asChild ? Slot : 'button';
 
   return (
-    <Comp data-slot="button" className={cn(buttonVariants({ variant, size, className }), 'cursor-pointer')}>
+    <Comp
+      type={props.type || 'submit'}
+      data-slot="button"
+      className={cn(buttonVariants({ variant, size, className }), 'cursor-pointer')}
+      {...props}
+    >
       {loading ? <div>LOADING...</div> : props.children}
     </Comp>
   );

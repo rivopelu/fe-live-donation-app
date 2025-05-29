@@ -4,8 +4,6 @@ import InputText from '@/components/InputText.tsx';
 import { MdEmail, MdVisibility, MdVisibilityOff } from 'react-icons/md';
 import { Button } from '@/components/ui/button.tsx';
 import { ENV } from '@/constants/env.ts';
-import { Link } from 'react-router-dom';
-import { ROUTES } from '@/routes/routes.ts';
 import BrandLogo from '@/components/BrandLogo.tsx';
 
 export default function SignInPage() {
@@ -44,11 +42,9 @@ export default function SignInPage() {
                 placeholder={'Masukan Kata sandi'}
                 label={'Kata sandi'}
               />
-              <Link to={ROUTES.DASHBOARD()} className={'grid'}>
-                <Button loading={true} className={'uppercase'}>
-                  Masuk
-                </Button>
-              </Link>
+              <Button loading={page.loading} className={'uppercase'} onClick={() => page.formik.handleSubmit()}>
+                Masuk
+              </Button>
             </div>
           </FormikProvider>
           <div className={'text-xs text-primary/60'}>V {ENV.VERSION}</div>
