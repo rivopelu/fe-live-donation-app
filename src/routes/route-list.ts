@@ -2,7 +2,7 @@ import { type JSX } from 'react';
 import type { PageType } from '@/enums/page-type-enum.ts';
 import HomePage from '@/pages/HomePage.tsx';
 import { ROUTES } from '@/routes/routes.ts';
-import SignInPage from '@/pages/auth/SignInPage.tsx';
+import SignInPage from '@/pages/auth/sign-in/SignInPage.tsx';
 import DashboardPage from '@/pages/dashboard/DashboardPage.tsx';
 
 export interface IRouteList {
