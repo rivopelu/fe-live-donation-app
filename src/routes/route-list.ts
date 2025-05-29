@@ -4,6 +4,8 @@ import HomePage from '@/pages/HomePage.tsx';
 import { ROUTES } from '@/routes/routes.ts';
 import SignInPage from '@/pages/auth/sign-in/SignInPage.tsx';
 import DashboardPage from '@/pages/dashboard/DashboardPage.tsx';
+import OverlayPage from '@/pages/dashboard/overlay/OverlayPage.tsx';
+import TransactionPage from '@/pages/dashboard/transaction/TransactionPage.tsx';
 
 export interface IRouteList {
   element: () => JSX.Element;
@@ -26,5 +28,15 @@ export const routeList: IRouteList[] = [
     path: ROUTES.DASHBOARD(),
     type: 'DASHBOARD',
     element: DashboardPage,
+  },
+  {
+    path: ROUTES.OVERLAY(),
+    type: 'DASHBOARD',
+    element: OverlayPage,
+  },
+  {
+    path: ROUTES.TRANSACTION(),
+    type: 'DASHBOARD',
+    element: TransactionPage,
   },
 ];

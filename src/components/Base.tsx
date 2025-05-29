@@ -11,9 +11,9 @@ export default function Base(props: IProps) {
         return <>{props.children}</>;
       case 'DASHBOARD':
         return (
-          <div className={'flex'}>
+          <div className={'flex w-full'}>
             <AppSidebar />
-            <div className={'flex-1'}>{props.children}</div>
+            <div className={'flex-1 '}>{props.children}</div>
           </div>
         );
       default:
