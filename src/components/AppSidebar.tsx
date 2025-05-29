@@ -19,32 +19,35 @@ export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel className={'h-top-bar-height p-0 m-0'}>
+        <SidebarGroup className={'py-0 h-top-bar-height border-b '}>
+          <SidebarGroupLabel className={' p-0 m-0 my-auto'}>
             <BrandLogo />
           </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {SIDEBAR_DATA.map((item) => {
-                const itemFirstPath = item.path && item?.path.split('/')[2];
-                const active = firstPath === itemFirstPath;
-                return (
-                  <SidebarMenuItem key={item.path}>
-                    <SidebarMenuButton
-                      asChild
-                      className={cn('text-gray-500 rounded-none', active && 'border-b text-black border-black/40')}
-                    >
-                      <Link to={item.path}>
-                        <item.icon />
-                        <span>{item.label}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                );
-              })}
-            </SidebarMenu>
-          </SidebarGroupContent>
         </SidebarGroup>
+        <SidebarGroupContent>
+          <SidebarMenu>
+            {SIDEBAR_DATA.map((item) => {
+              const itemFirstPath = item.path && item?.path.split('/')[2];
+              const active = firstPath === itemFirstPath;
+              return (
+                <SidebarMenuItem key={item.path}>
+                  <SidebarMenuButton
+                    asChild
+                    className={cn(
+                      'text-gray-500 dark:text-gray-300 rounded-none',
+                      active && 'border-b dark:text-white text-black dark:border-white/20 border-black/40',
+                    )}
+                  >
+                    <Link to={item.path}>
+                      <item.icon />
+                      <span>{item.label}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              );
+            })}
+          </SidebarMenu>
+        </SidebarGroupContent>
       </SidebarContent>
     </Sidebar>
   );

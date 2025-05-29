@@ -1,6 +1,7 @@
 import type { PageType } from '@/enums/page-type-enum.ts';
 import type { ReactNode } from 'react';
 import { AppSidebar } from '@/components/AppSidebar.tsx';
+import TopBar from '@/components/TopBar.tsx';
 
 export default function Base(props: IProps) {
   function render() {
@@ -11,9 +12,12 @@ export default function Base(props: IProps) {
         return <>{props.children}</>;
       case 'DASHBOARD':
         return (
-          <div className={'flex w-full'}>
-            <AppSidebar />
-            <div className={'flex-1 '}>{props.children}</div>
+          <div className={'w-full'}>
+            <TopBar />
+            <div className={'flex w-full'}>
+              <AppSidebar />
+              <div className={'flex-1 '}>{props.children}</div>
+            </div>
           </div>
         );
       default:

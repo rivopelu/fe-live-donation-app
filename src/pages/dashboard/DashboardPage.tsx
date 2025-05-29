@@ -10,6 +10,9 @@ export default function DashboardPage() {
       <Button onClick={() => auth.logOut()} variant={'destructive'}>
         LOGOUT
       </Button>
+      {Array.from({ length: 499 }).map((_, i) => (
+        <div key={i}>{i}</div>
+      ))}
     </PageContainer>
   );
 }
