@@ -2,9 +2,12 @@ import { useFormik } from 'formik';
 import type { IReqSignIn } from '@/types/request/IReqSignIn.ts';
 import * as yup from 'yup';
 import { useState } from 'react';
+import { useAuth } from '@/hooks/useAuth.ts';
 
 export function useSignInPage() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const auth = useAuth();
 
   const initState: IReqSignIn = {
     email: '',
@@ -17,7 +20,7 @@ export function useSignInPage() {
   const formik = useFormik({
     initialValues: initState,
     validationSchema: validationSchema,
-    onSubmit: (e) => alert(JSON.stringify(e)),
+    onSubmit: (e) => auth.loginAction(e, setLoading),
   });
-  return { formik, showPassword, setShowPassword };
+  return { formik, showPassword, setShowPassword, loading };
 }

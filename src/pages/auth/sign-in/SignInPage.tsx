@@ -45,7 +45,9 @@ export default function SignInPage() {
                 label={'Kata sandi'}
               />
               <Link to={ROUTES.DASHBOARD()} className={'grid'}>
-                <Button className={'uppercase'}>Masuk</Button>
+                <Button loading={true} className={'uppercase'}>
+                  Masuk
+                </Button>
               </Link>
             </div>
           </FormikProvider>
