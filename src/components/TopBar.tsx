@@ -10,7 +10,7 @@ export default function TopBar() {
       <div className={'bg-sidebar border-b w-full flex h-top-bar-height fixed'}>
         <div className={'w-(--sidebar-width)'}></div>
 
-        <p className={'flex-1 h-full '}>
+        <div className={'flex-1 h-full '}>
           <PageContainer className={'flex-1 h-full'}>
             <div className={'h-full flex items-center justify-between'}>
               <div>Halo, {auth?.user?.name}</div>
@@ -20,7 +20,7 @@ export default function TopBar() {
               </div>
             </div>
           </PageContainer>
-        </p>
+        </div>
       </div>
     </div>
   );

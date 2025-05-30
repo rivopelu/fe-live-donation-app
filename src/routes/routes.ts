@@ -4,4 +4,5 @@ export const ROUTES = {
   DASHBOARD: () => `/dashboard`,
   OVERLAY: () => `/dashboard/overlay`,
   TRANSACTION: () => `/dashboard/transaction`,
+  EDIT_OVERLAY: (id: string) => `/dashboard/overlay/edit/${id}`,
 };

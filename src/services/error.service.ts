@@ -10,14 +10,26 @@ export default class ErrorService {
   }
 
   public fetchApiError(error: any) {
-    if (error?.response?.status === 401) {
-      this.auth.logOut();
+    console.log('Full error:', error);
+
+    if (axios.isAxiosError(error)) {
+      if (error.response) {
+        if (error.response.status === 401) {
+          alert('MASUK');
+          this.auth.logOut();
+          return;
+        }
+        const message = error.response.data?.message || 'Terjadi Kesalahan Pada Sistem';
+        this.handleSnackbar(message);
+      } else if (error.code === 'ERR_NETWORK' || error.message === 'Network Error') {
+        this.handleSnackbar('Tidak dapat terhubung ke server. Periksa server backend dan koneksi jaringan Anda.');
+      } else if (error.request) {
+        this.handleSnackbar('Tidak ada respon dari server. Periksa koneksi jaringan.');
+      } else {
+        this.handleSnackbar('Kesalahan dalam mengirim permintaan.');
+      }
     } else {
-      let message;
-      if (axios.isAxiosError(error) && error.response) {
-        message = error?.response?.data?.message ? error?.response?.data?.message : 'Terjadi Kesalahan Pada Sistem';
-      } else message = String(error);
-      return this.handleSnackbar(message);
+      this.handleSnackbar(String(error));
     }
   }
 }

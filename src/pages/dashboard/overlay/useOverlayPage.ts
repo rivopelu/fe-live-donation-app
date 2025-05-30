@@ -10,7 +10,7 @@ export function useOverlayPage() {
   const errorService = new ErrorService();
 
   const queryOverlay = useQuery({
-    queryKey: ['list_user_overlay'],
+    queryKey: ['list_user_overlay_data'],
     queryFn: () =>
       httpService
         .GET(ENDPOINT.USER_OVERLAY())
@@ -19,6 +19,7 @@ export function useOverlayPage() {
         })
         .catch((e) => {
           errorService.fetchApiError(e);
+          return [];
         }),
   });
   return { queryOverlay };
