@@ -1,15 +1,28 @@
 import PageContainer from '@/components/PageContainer.tsx';
-import { useOverlayPage } from '@/pages/dashboard/overlay/useOverlayPage.ts';
-import { Card, CardContent } from '@/components/ui/card.tsx';
 import { Button } from '@/components/ui/button.tsx';
-import { MdContentCopy, MdEdit } from 'react-icons/md';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip.tsx';
-import { Link } from 'react-router-dom';
+import { Card, CardContent } from '@/components/ui/card.tsx';
+import { useOverlayPage } from '@/pages/dashboard/overlay/useOverlayPage.ts';
 import { ROUTES } from '@/routes/routes.ts';
+import toast from 'react-hot-toast';
+import { MdContentCopy, MdEdit } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 export default function OverlayPage() {
   const page = useOverlayPage();
   const data = page.queryOverlay.data || [];
+
+  function copyToClipboard(text: string): void {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        console.log('Teks berhasil disalin!');
+        toast.success('URL berhasil di copy');
+      })
+      .catch((err) => {
+        console.error('Gagal menyalin teks: ', err);
+      });
+  }
+
   return (
     <PageContainer>
       <div>
@@ -28,18 +41,9 @@ export default function OverlayPage() {
                       <MdEdit />
                     </Button>
                   </Link>
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger>
-                        <Button size={'icon'}>
-                          <MdContentCopy />
-                        </Button>
-                      </TooltipTrigger>
-                      <TooltipContent side={'bottom'}>
-                        <p>Copy URL</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
+                  <Button size={'icon'} onClick={() => copyToClipboard(ROUTES.OVERLAY_PUBLIC(e.id))}>
+                    <MdContentCopy />
+                  </Button>
                 </div>
               </CardContent>
             </Card>

@@ -15,7 +15,6 @@ export default class ErrorService {
     if (axios.isAxiosError(error)) {
       if (error.response) {
         if (error.response.status === 401) {
-          alert('MASUK');
           this.auth.logOut();
           return;
         }

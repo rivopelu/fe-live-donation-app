@@ -7,6 +7,7 @@ import DashboardPage from '@/pages/dashboard/DashboardPage.tsx';
 import OverlayPage from '@/pages/dashboard/overlay/OverlayPage.tsx';
 import TransactionPage from '@/pages/dashboard/transaction/TransactionPage.tsx';
 import FormOverlayPage from '@/pages/dashboard/overlay/FormOverlayPage.tsx';
+import PublicOverlayPage from '@/pages/public-overlay/PublicOverlayPage';
 
 export interface IRouteList {
   element: () => JSX.Element;
@@ -14,7 +15,12 @@ export interface IRouteList {
   type: PageType;
 }
 
-export const routeList: IRouteList[] = [
+export const PUBLIC_ROUTE: IRouteList[] = [
+  {
+    path: '/p/:id',
+    type: 'FULL_PAGE',
+    element: PublicOverlayPage,
+  },
   {
     element: HomePage,
     type: 'FULL_PAGE',
@@ -25,6 +31,9 @@ export const routeList: IRouteList[] = [
     type: 'FULL_PAGE',
     element: SignInPage,
   },
+];
+
+export const PRIVATE_ROUTE: IRouteList[] = [
   {
     path: ROUTES.DASHBOARD(),
     type: 'DASHBOARD',

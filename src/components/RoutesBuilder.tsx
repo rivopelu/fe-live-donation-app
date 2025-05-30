@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
-import { routeList } from '@/routes/route-list.ts';
 import Base from '@/components/Base.tsx';
+import { PRIVATE_ROUTE, PUBLIC_ROUTE } from '@/routes/route-list';
 
 export default function RoutesBuilder() {
   return (
     <Routes>
-      {routeList.map((route) => {
+      {[...PUBLIC_ROUTE, ...PRIVATE_ROUTE].map((route) => {
         const Element = route.element;
         return (
           <Route
