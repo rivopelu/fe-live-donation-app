@@ -1,5 +1,7 @@
 export interface IReqSettingOverlay {
-  backround_color: string;
+  background_color: string;
   text_color: string;
-  hightligh_color: string;
+  highlight_color: string;
+  text: string;
+  type: string;
 }

@@ -1,6 +1,7 @@
 import InputColor from '@/components/InputColor';
 import OverlayPreview from '@/components/OverlayPreview';
 import PageContainer from '@/components/PageContainer.tsx';
+import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { useFormOverlay } from '@/pages/dashboard/overlay/useFormOverlay.ts';
 import type { IResDetailOverlay } from '@/types/response/IResDetailOverlay';
@@ -11,7 +12,12 @@ export default function FormOverlayPage() {
   const data = page?.queryData?.data as IResDetailOverlay;
   return (
     <PageContainer>
-      <h1>Edit Overlay</h1>
+      <div className="flex justify-between items-center my-10">
+        <h1>Edit Overlay</h1>
+        <Button loading={page.mutationEdit.isPending} onClick={() => page.formik.handleSubmit()}>
+          SUBMIT
+        </Button>
+      </div>
       <div>
         {page.queryData?.isPending ? (
           <div>LOADING</div>
@@ -20,8 +26,8 @@ export default function FormOverlayPage() {
             <OverlayPreview
               message="Semangat yah kamu"
               donation_amount={10000}
-              highlight_color={page.formik.values.hightligh_color}
-              backround_color={page.formik.values.backround_color}
+              highlight_color={page.formik.values.highlight_color}
+              background_color={page.formik.values.background_color}
               text_color={page.formik.values.text_color}
               data={data}
             />
@@ -30,8 +36,8 @@ export default function FormOverlayPage() {
                 <CardContent>
                   <div className="grid gap-5 grid-cols-3">
                     <InputColor
-                      id="backround_color"
-                      name="backround_color"
+                      id="background_color"
+                      name="background_color"
                       required
                       placeholder="Pilih backround color"
                       label="Backround color"
@@ -44,11 +50,11 @@ export default function FormOverlayPage() {
                       label="Text color"
                     />
                     <InputColor
-                      id="hightligh_color"
-                      name="hightligh_color"
+                      id="highlight_color"
+                      name="highlight_color"
                       required
                       placeholder="Pilih highlight color"
-                      label="Highligh color"
+                      label="Highlight color"
                     />
                   </div>
                 </CardContent>
