@@ -14,14 +14,18 @@ export function usePublicDonationPage() {
   const errorService = new ErrorService();
   const { username } = useParams();
 
+  const listAmount = [5000, 10000, 15000, 20000, 50000, 100000];
+
   const initValue: IReqCreateDonation = {
     amount: 0,
     from: '',
+    email: '',
     message: '',
   };
 
   const validationSchema = yup.object().shape({
     amount: yup.number().min(1000).required(),
+    email: yup.string().required(),
     from: yup.string().required(),
     message: yup.string().required().max(255),
   });
@@ -45,5 +49,5 @@ export function usePublicDonationPage() {
         }),
   });
 
-  return { queryUser, formik };
+  return { queryUser, formik, listAmount };
 }
