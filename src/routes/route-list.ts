@@ -8,6 +8,7 @@ import OverlayPage from '@/pages/dashboard/overlay/OverlayPage.tsx';
 import TransactionPage from '@/pages/dashboard/transaction/TransactionPage.tsx';
 import FormOverlayPage from '@/pages/dashboard/overlay/FormOverlayPage.tsx';
 import PublicOverlayPage from '@/pages/public-overlay/PublicOverlayPage';
+import PublicDonationPage from '@/pages/public-overlay/PublicDonationPage';
 
 export interface IRouteList {
   element: () => JSX.Element;
@@ -30,6 +31,11 @@ export const PUBLIC_ROUTE: IRouteList[] = [
     path: ROUTES.SIGN_IN(),
     type: 'FULL_PAGE',
     element: SignInPage,
+  },
+  {
+    path: ROUTES.PUBLIC_DONATION(':username'),
+    type: 'FULL_PAGE',
+    element: PublicDonationPage,
   },
 ];
 

@@ -6,4 +6,5 @@ export const ROUTES = {
   TRANSACTION: () => `/dashboard/transaction`,
   EDIT_OVERLAY: (id: string) => `/dashboard/overlay/edit/${id}`,
   OVERLAY_PUBLIC: (id: string) => `${window.location.origin}/p/${id}`,
+  PUBLIC_DONATION: (username: string) => `/d/${username}`,
 };

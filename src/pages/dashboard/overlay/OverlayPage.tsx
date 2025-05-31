@@ -26,7 +26,7 @@ export default function OverlayPage() {
   return (
     <PageContainer>
       <div>
-        <h1>Overlay</h1>
+        <h1 className="my-6">Overlay</h1>
         <div>
           {data.map((e, i) => (
             <Card key={i}>
